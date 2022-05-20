@@ -9,7 +9,9 @@
 
 namespace ZendTest\Hydrator\TestAsset;
 
-class ArrayObjectIterator implements \Iterator
+use Iterator;
+
+class ArrayObjectIterator implements Iterator
 {
 
     private $var = [];

@@ -10,7 +10,7 @@
 
 namespace ZendTest\Hydrator;
 
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @requires PHP 5.4
@@ -23,7 +23,7 @@ class HydratorAwareTraitTest extends TestCase
 
         $this->assertAttributeEquals(null, 'hydrator', $object);
 
-        $hydrator = $this->getMockForAbstractClass('\Zend\Hydrator\AbstractHydrator');
+        $hydrator = $this->createMock('\Zend\Hydrator\AbstractHydrator');
 
         $object->setHydrator($hydrator);
 
@@ -36,7 +36,7 @@ class HydratorAwareTraitTest extends TestCase
 
         $this->assertNull($object->getHydrator());
 
-        $hydrator = $this->getMockForAbstractClass('\Zend\Hydrator\AbstractHydrator');
+        $hydrator = $this->createMock('\Zend\Hydrator\AbstractHydrator');
 
         $object->setHydrator($hydrator);
 

@@ -9,6 +9,8 @@
 
 namespace ZendTest\Hydrator;
 
+use PHPUnit\Framework\TestCase;
+use stdClass;
 use Zend\Hydrator\Exception\BadMethodCallException;
 use Zend\Hydrator\ObjectProperty;
 use ZendTest\Hydrator\TestAsset\ClassWithPublicStaticProperties;
@@ -19,7 +21,7 @@ use ZendTest\Hydrator\TestAsset\ObjectProperty as ObjectPropertyTestAsset;
  *
  * @covers \Zend\Hydrator\ObjectProperty
  */
-class ObjectPropertyTest extends \PHPUnit_Framework_TestCase
+class ObjectPropertyTest extends TestCase
 {
     /**
      * @var ObjectProperty
@@ -29,7 +31,7 @@ class ObjectPropertyTest extends \PHPUnit_Framework_TestCase
     /**
      * {@inheritDoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->hydrator = new ObjectProperty();
     }
@@ -39,7 +41,7 @@ class ObjectPropertyTest extends \PHPUnit_Framework_TestCase
      */
     public function testHydratorExtractThrowsExceptionOnNonObjectParameter()
     {
-        $this->setExpectedException('BadMethodCallException');
+        $this->expectException('BadMethodCallException');
         $this->hydrator->extract('thisIsNotAnObject');
     }
 
@@ -48,7 +50,7 @@ class ObjectPropertyTest extends \PHPUnit_Framework_TestCase
      */
     public function testHydratorHydrateThrowsExceptionOnNonObjectParameter()
     {
-        $this->setExpectedException('BadMethodCallException');
+        $this->expectException('BadMethodCallException');
         $this->hydrator->hydrate(['some' => 'data'], 'thisIsNotAnObject');
     }
 
@@ -57,7 +59,7 @@ class ObjectPropertyTest extends \PHPUnit_Framework_TestCase
      */
     public function testCanExtractFromStdClass()
     {
-        $object = new \stdClass();
+        $object = new stdClass();
         $object->foo = 'bar';
 
         $this->assertSame(['foo' => 'bar'], $this->hydrator->extract($object));
@@ -84,7 +86,7 @@ class ObjectPropertyTest extends \PHPUnit_Framework_TestCase
      */
     public function testCanHydrateStdClass()
     {
-        $object = new \stdClass();
+        $object = new stdClass();
         $object->foo = 'bar';
 
         $object = $this->hydrator->hydrate(['foo' => 'baz'], $object);
@@ -97,7 +99,7 @@ class ObjectPropertyTest extends \PHPUnit_Framework_TestCase
      */
     public function testCanHydrateAdditionalPropertiesToStdClass()
     {
-        $object = new \stdClass();
+        $object = new stdClass();
         $object->foo = 'bar';
 
         $object = $this->hydrator->hydrate(['foo' => 'baz', 'bar' => 'baz'], $object);

@@ -9,6 +9,7 @@
 
 namespace ZendTest\Hydrator\Filter;
 
+use PHPUnit\Framework\TestCase;
 use Zend\Hydrator\Filter\NumberOfParameterFilter;
 
 /**
@@ -16,7 +17,7 @@ use Zend\Hydrator\Filter\NumberOfParameterFilter;
  *
  * @covers \Zend\Hydrator\Filter\NumberOfParameterFilter
  */
-class NumberOfParameterFilterTest extends \PHPUnit_Framework_TestCase
+class NumberOfParameterFilterTest extends TestCase
 {
     /**
      * @group 6083

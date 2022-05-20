@@ -9,6 +9,7 @@
 
 namespace ZendTest\Hydrator;
 
+use PHPUnit\Framework\TestCase;
 use Zend\Hydrator\ClassMethods;
 use ZendTest\Hydrator\TestAsset\ClassMethodsCamelCaseMissing;
 use ZendTest\Hydrator\TestAsset\ClassMethodsOptionalParameters;
@@ -20,7 +21,7 @@ use ZendTest\Hydrator\TestAsset\ArraySerializable;
  *
  * @covers \Zend\Hydrator\ClassMethods
  */
-class ClassMethodsTest extends \PHPUnit_Framework_TestCase
+class ClassMethodsTest extends TestCase
 {
     /**
      * @var ClassMethods
@@ -30,7 +31,7 @@ class ClassMethodsTest extends \PHPUnit_Framework_TestCase
     /**
      * {@inheritDoc}
      */
-    public function setUp()
+    protected function setUp(): void
     {
         $this->hydrator = new ClassMethods();
     }

@@ -9,6 +9,8 @@
 
 namespace Zend\Hydrator\Strategy;
 
+use Exception;
+
 class ClosureStrategy implements StrategyInterface
 {
     /**
@@ -60,7 +62,7 @@ class ClosureStrategy implements StrategyInterface
     {
         if (isset($extractFunc)) {
             if (!is_callable($extractFunc)) {
-                throw new \Exception('$extractFunc must be callable');
+                throw new Exception('$extractFunc must be callable');
             }
 
             $this->extractFunc = $extractFunc;
@@ -72,7 +74,7 @@ class ClosureStrategy implements StrategyInterface
 
         if (isset($hydrateFunc)) {
             if (!is_callable($hydrateFunc)) {
-                throw new \Exception('$hydrateFunc must be callable');
+                throw new Exception('$hydrateFunc must be callable');
             }
 
             $this->hydrateFunc = $hydrateFunc;

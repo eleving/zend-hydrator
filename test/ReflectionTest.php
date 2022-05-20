@@ -9,6 +9,7 @@
 
 namespace ZendTest\Hydrator;
 
+use PHPUnit\Framework\TestCase;
 use stdClass;
 use Zend\Hydrator\Reflection;
 
@@ -17,7 +18,7 @@ use Zend\Hydrator\Reflection;
  *
  * @covers \Zend\Hydrator\Reflection
  */
-class ReflectionTest extends \PHPUnit_Framework_TestCase
+class ReflectionTest extends TestCase
 {
     /**
      * @var Reflection
@@ -27,7 +28,7 @@ class ReflectionTest extends \PHPUnit_Framework_TestCase
     /**
      * {@inheritDoc}
      */
-    public function setUp()
+    protected function setUp(): void
     {
         $this->hydrator = new Reflection();
     }
